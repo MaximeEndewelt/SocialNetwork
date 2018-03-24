@@ -16,16 +16,17 @@ public class SocialNetworkServices
     public List<Post> processInput(Input input)
     {
         String username = input.getUserName();
-        List<Post> response = null;
+        List<Post> response = new ArrayList<>();
 
         switch (input.getType())
         {
             case EPost:
-                Post post = new Post(input.getMessage());
+                Post post = new Post(username, input.getMessage());
                 List<Post> posts = userPosts.get(username);
                 if(posts == null)
                 {
                     posts = new ArrayList<>();
+                    userPosts.put(username, posts);
                 }
                 posts.add(post);
                 break;
@@ -69,6 +70,7 @@ public class SocialNetworkServices
                 if(followedUsers == null)
                 {
                     followedUsers = new ArrayList<>();
+                    followers.put(username, followedUsers);
                 }
                 followedUsers.add(followedUser);
                 break;

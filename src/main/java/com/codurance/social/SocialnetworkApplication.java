@@ -2,12 +2,17 @@ package com.codurance.social;
 
 import com.codurance.social.entities.Input;
 import com.codurance.social.entities.InputParser;
+import com.codurance.social.entities.Post;
 import com.codurance.social.services.SocialNetworkServices;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class SocialnetworkApplication implements CommandLineRunner
@@ -45,7 +50,8 @@ public class SocialnetworkApplication implements CommandLineRunner
 				}
 				else
 				{
-					services.processInput(input);
+					List<Post> posts = services.processInput(input);
+					renderOutput(posts);
 				}
 			}
 		}
@@ -55,7 +61,24 @@ public class SocialnetworkApplication implements CommandLineRunner
 		}
 
 		System.out.println("Social Network is OFF");
+	}
 
+	private void renderOutput(List<Post> posts)
+	{
+		//
+		// The sort can be done here in O(n * log(n))
+		//
+		if(posts != null)
+		{
+			Collections.sort(posts, Comparator.comparingLong(Post::getTimestamp));
+			posts.forEach((post) -> System.out.println(post.getUsername()+" - "+post.getMessage()+" ("+convertTimestamp(post.getTimestamp())+")"));
+		}
+	}
 
+	private String convertTimestamp(long timestamp)
+	{
+		long minutesAgo = TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - timestamp);
+		String response = minutesAgo+ " minutes ago";
+		return  response;
 	}
 }
