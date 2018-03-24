@@ -42,6 +42,7 @@ public class Input
         EPost,
         ERead,
         EFollow,
-        EWall
+        EWall,
+        EExit
     }
 }

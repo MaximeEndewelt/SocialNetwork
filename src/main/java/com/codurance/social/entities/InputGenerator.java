@@ -31,4 +31,10 @@ public class InputGenerator
 
         return input;
     }
+
+    public static Input generateExit()
+    {
+        Input input = new Input(Input.InputType.EExit, null);
+        return input;
+    }
 }

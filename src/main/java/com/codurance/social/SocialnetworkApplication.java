@@ -23,19 +23,38 @@ public class SocialnetworkApplication implements CommandLineRunner
 		System.out.println("Social Network is ON");
 
 		SocialNetworkServices services = new SocialNetworkServices();
-		Scanner scanner = new Scanner(System.in);
-		String inputString;
+		Scanner scanner = null;
+		boolean running = true;
 
-		//
-		// Create a loop waiting for user input
-		//
-		while (true)
+		try
 		{
-			inputString = scanner.nextLine();
-			Input input = InputParser.parseInput(inputString);
+			scanner = new Scanner(System.in);
+			String inputString;
 
-			services.processInput(input);
+			//
+			// Create a loop waiting for user input
+			//
+			while (running)
+			{
+				inputString = scanner.nextLine();
+				Input input = InputParser.parseInput(inputString);
+				if (input.getType().equals(Input.InputType.EExit))
+				{
+					// Exit program
+					running = false;
+				}
+				else
+				{
+					services.processInput(input);
+				}
+			}
 		}
+		finally
+		{
+			scanner.close();
+		}
+
+		System.out.println("Social Network is OFF");
 
 
 	}

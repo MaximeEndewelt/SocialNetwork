@@ -22,9 +22,16 @@ public class InputParser
         if(length == 1)
         {
             //
-            // Arguments length is 1, then it's a READ type
+            // Arguments length is 1, then it's a READ type or EXIT program
             //
-            input =  InputGenerator.generateRead(userName);
+            if(userName.equalsIgnoreCase("exit"))
+            {
+                input = InputGenerator.generateExit();
+            }
+            else
+            {
+                input =  InputGenerator.generateRead(userName);
+            }
         }
 
         if(length == 2)
