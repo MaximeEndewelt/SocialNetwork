@@ -2,6 +2,7 @@ package com.codurance.social;
 
 import com.codurance.social.entities.Input;
 import com.codurance.social.entities.InputParser;
+import com.codurance.social.services.SocialNetworkServices;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +12,6 @@ import java.util.Scanner;
 @SpringBootApplication
 public class SocialnetworkApplication implements CommandLineRunner
 {
-
 	public static void main(String[] args)
 	{
 		SpringApplication.run(SocialnetworkApplication.class, args);
@@ -22,6 +22,7 @@ public class SocialnetworkApplication implements CommandLineRunner
 	{
 		System.out.println("Social Network is ON");
 
+		SocialNetworkServices services = new SocialNetworkServices();
 		Scanner scanner = new Scanner(System.in);
 		String inputString;
 
@@ -33,7 +34,7 @@ public class SocialnetworkApplication implements CommandLineRunner
 			inputString = scanner.nextLine();
 			Input input = InputParser.parseInput(inputString);
 
-			// Do something
+			services.processInput(input);
 		}
 
 

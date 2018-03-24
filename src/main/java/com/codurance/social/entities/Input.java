@@ -37,7 +37,7 @@ public class Input
         return message;
     }
 
-    enum InputType
+    public enum InputType
     {
         EPost,
         ERead,
