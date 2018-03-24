@@ -1,5 +1,8 @@
 package com.codurance.social.entities;
 
+/**
+ * Factory helper generating specific Input
+ */
 public class InputGenerator
 {
     public static Input generatePost(String userName, String message)

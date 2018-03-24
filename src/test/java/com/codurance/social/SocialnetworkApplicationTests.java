@@ -1,4 +1,4 @@
-package com.codurance.demo;
+package com.codurance.social;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,5 +1,8 @@
 package com.codurance.social.entities;
 
+/**
+ * Entity representing an input based on its type
+ */
 public class Input
 {
     private final InputType type;
@@ -37,6 +40,9 @@ public class Input
         return message;
     }
 
+    /**
+     * Type of Input
+     */
     public enum InputType
     {
         EPost,

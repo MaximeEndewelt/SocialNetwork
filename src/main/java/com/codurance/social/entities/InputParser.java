@@ -1,12 +1,15 @@
 package com.codurance.social.entities;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
-
+/**
+ * Utility class used for parsing user input
+ */
 public class InputParser
 {
+    /**
+     * Parse the user input
+     * @param inputString the rwa input
+     * @return a entity representing a user input
+     */
     public static Input parseInput(String inputString)
     {
         Input input = null;

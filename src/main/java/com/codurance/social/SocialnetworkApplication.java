@@ -63,6 +63,11 @@ public class SocialnetworkApplication implements CommandLineRunner
 		System.out.println("Social Network is OFF");
 	}
 
+	/**
+	 * Render a formatted output when the user
+	 * wants to read posts
+	 * @param posts a list of posts
+	 */
 	private void renderOutput(List<Post> posts)
 	{
 		//
@@ -75,6 +80,11 @@ public class SocialnetworkApplication implements CommandLineRunner
 		}
 	}
 
+	/**
+	 * Convert a timestamp into a human readable format
+	 * @param timestamp
+	 * @return
+	 */
 	private String convertTimestamp(long timestamp)
 	{
 		long minutesAgo = TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis() - timestamp);

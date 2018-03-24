@@ -8,11 +8,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Service responsible for processing user inputs
+ * for Social Networking
+ */
 public class SocialNetworkServices
 {
     private Map<String, List<Post>> userPosts = new HashMap<>();
     private Map<String, List<String>> followers = new HashMap<>();
 
+    /**
+     * Process a user input
+     * @param input
+     * @return a list of posts if the users needs a output
+     * or an empty list otherwise
+     */
     public List<Post> processInput(Input input)
     {
         String username = input.getUserName();

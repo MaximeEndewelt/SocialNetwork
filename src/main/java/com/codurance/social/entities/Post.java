@@ -1,5 +1,9 @@
 package com.codurance.social.entities;
 
+/**
+ * Entity representing a post
+ * defined by a user, a message and a timestamp
+ */
 public class Post
 {
     private final String username;
